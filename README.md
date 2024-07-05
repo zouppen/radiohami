@@ -12,12 +12,12 @@ Jakelukoneella on seuraavat vaatimukset:
 
 * Kyky vastaanottaa ääntä AES67:lla ja välittää monitorointiääntä takaisin
 * Äänen prosessointi hunajaiseksi
-* MPX:n muodostaminen (192kHz mono) FM-lähetyksiä varten
-* DAB-ensemblen multipleksaus ja digitaaliäänikanavan/kanavien enkoodaus.
+* MPX:n muodostaminen (192kHz mono) FM-lähetystä varten
+* DAB-ensemblen multipleksaus ja digitaaliäänikanavan tai -kanavien enkoodaus
 * E1-sarjaliikenteen muodostaminen DAB-modulaattoria varten
-* Nettiradiostriimien muodostaminen (Opus ja MP3) nettiradiojakelua varten
+* Nettiradiostriimien muodostaminen (Opus ja MP3)
 * Kyky selvityä uudelleenkäynnistyksistä (palvelut lähtevät päälle oikein bootissa)
 * Kyky selviytyä tietokoneen jumiutumisesta (hw watchdog)
 * Referenssitaltioinnin tekeminen lähetyksestä
 * Metatietojen tuottaminen eri medioihin (nettiradio, RDS, Journaline?)
-* Vikasietoinen levyjärjestelmä (RAID1 tai RAID5 sekä snapshottausta tukeva levyjärjestelmä)
+* Vikasietoinen levyjärjestelmä (RAID1 tai RAID5) sekä snapshottausta tukeva levyjärjestelmä
