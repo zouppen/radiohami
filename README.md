@@ -1,6 +1,6 @@
 # Radio Hami broadcast tools
 
-Broadcast tools repo for Radio Hami 2024 project, Nurmes 2024.
+Broadcast tools repo for Radio Hami 2024 project, Joensuu 2024.
 
 The whole team is Finnish-speaking so...
 
