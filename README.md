@@ -1,6 +1,6 @@
 # Radio Hami broadcast tools
 
-Broadcast tools repo for Radio Hami 2024 project, Joensuu 2024.
+Broadcast tools repo for Radio Hami 2024 project, in Joensuu, Finland.
 
 The whole team is Finnish-speaking so...
 
@@ -11,8 +11,10 @@ Tänne vaan kaikki issuet ja koodinpätkät, mitä operaatiosta syntyy. Jos myö
 Jakelukoneella on seuraavat vaatimukset:
 
 * Kyky vastaanottaa ääntä AES67:lla ja välittää monitorointiääntä takaisin
+* Äänen prosessointi hunajaiseksi
 * MPX:n muodostaminen (192kHz mono) FM-lähetyksiä varten
-* E1-sarjaliikenteen muodostaminen DAB+-lähetystä varten
+* DAB-ensemblen multipleksaus ja digitaaliäänikanavan/kanavien enkoodaus.
+* E1-sarjaliikenteen muodostaminen DAB-modulaattoria varten
 * Nettiradiostriimien muodostaminen (Opus ja MP3) nettiradiojakelua varten
 * Kyky selvityä uudelleenkäynnistyksistä (palvelut lähtevät päälle oikein bootissa)
 * Kyky selviytyä tietokoneen jumiutumisesta (hw watchdog)
