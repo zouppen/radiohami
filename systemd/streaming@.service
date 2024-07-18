@@ -1,0 +1,14 @@
+[Unit]
+Description=Internet radio streaming for %i
+After=pipewire.service
+Requires=pipewire.service
+
+[Service]
+Type=simple
+EnvironmentFile=%h/radiohami/streaming.conf
+ExecStart=%h/ohjelmat/radiohami_tools/bin/stream_to_icecast %I
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=default.target
