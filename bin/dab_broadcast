@@ -1,0 +1,2 @@
+#!/bin/sh -eu
+odr-dabmux ~/radiohami/dabmux.ini | odr-dabmod ~/radiohami/dabmod.ini
