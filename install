@@ -1,0 +1,22 @@
+#!/bin/sh -eu
+
+if test ! ${SUDO_UID+x}; then
+    echo "Usage: sudo $0 $@"
+    exit 1
+fi
+
+servicedir="/etc/systemd/system/user@$SUDO_UID.service.d"
+servicefile="$servicedir/radiohami.conf"
+ourpath="$(realpath "$(dirname "$0")/systemd")"
+
+mkdir -p "$servicedir"
+cat >"$servicefile" <<EOF
+[Service]
+AmbientCapabilities=CAP_SYS_NICE
+Environment=SYSTEMD_UNIT_PATH=$ourpath:
+EOF
+
+loginctl enable-linger "$SUDO_UID"
+systemctl daemon-reload
+
+echo "Installed. Now consider rebooting or running: sudo systemctl restart user@$SUDO_UID"
