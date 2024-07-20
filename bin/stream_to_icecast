@@ -1,17 +1,16 @@
 #!/bin/sh -eu
 
-# OBS! Variables "input" and "base_url" are delivered via systemd
+# OBS! Variables in capital letters are delivered via systemd
 
 # Get Pulseaudio input number (ffmpeg bugs with symbolic name)
-export input
-input_num="$(pactl -f json list sources short|jq -e 'map(select(.name == env.input) | .index)[0]')"
+input_num="$(pactl -f json list sources short|jq -e 'map(select(.name == env.INPUT) | .index)[0]')"
 
-case "${1-}" in
+case "${FORMAT-}" in
     opus)
-	ffmpeg -nostdin -f pulse -i "$input_num" -c:a libopus -vbr on -b:a 96k -content_type audio/ogg -vn -f opus "$base_url.opus"
+	ffmpeg -nostdin -f pulse -i "$input_num" -c:a libopus -vbr on -b:a $BITRATE -content_type audio/ogg -vn -f opus "$OUTPUT"
 	;;
     mp3)
-	ffmpeg -nostdin -f pulse -i "$input_num" -c:a libmp3lame -qscale:a 6 -content_type audio/mpeg -vn -f mp3 "$base_url.mp3"
+	ffmpeg -nostdin -f pulse -i "$input_num" -c:a libmp3lame -qscale:a $QUALITY -content_type audio/mpeg -vn -f mp3 "$OUTPUT"
 	;;
     *)
 	echo "Unknown codec" >&2
