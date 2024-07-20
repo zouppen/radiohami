@@ -1,0 +1,11 @@
+[Unit]
+Description=Pipewire AES67
+After=ptp4l.service
+After=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pipewire-aes67
+
+[Install]
+WantedBy=default.target
