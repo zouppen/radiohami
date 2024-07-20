@@ -4,7 +4,7 @@ After=networking.service
 
 [Service]
 Type=simple
-ExecStart=%h/ohjelmat/radiohami_tools/bin/dab_broadcast
+ExecStart=%Y/../bin/dab_broadcast
 Restart=always
 RestartSec=10s
 AmbientCapabilities=CAP_SYS_NICE
