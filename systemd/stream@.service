@@ -6,7 +6,7 @@ Requires=pipewire.service
 [Service]
 Type=simple
 EnvironmentFile=%h/radiohami/stream/%I.conf
-ExecStart=%Y/../bin/stream_to_icecast
+ExecStart=%Y/../bin/stream
 Restart=always
 RestartSec=10s
 
