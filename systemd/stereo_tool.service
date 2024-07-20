@@ -1,0 +1,16 @@
+[Unit]
+Description=Stereo Tool
+After=pipewire.service
+Requires=pipewire.service
+
+[Service]
+Type=simple
+EnvironmentFile=%h/radiohami/stereo_tool.conf
+ExecStart=/usr/bin/tigervncserver -geometry ${STEREO_TOOL_GEOMETRY} -rfbunixpath ${RUNTIME_DIRECTORY}/vnc -SecurityTypes None -fg -xstartup %Y/../bin/stereo_tool_xstartup
+Restart=always
+RestartSec=10s
+RuntimeDirectory=stereo_tool
+AmbientCapabilities=CAP_SYS_NICE
+
+[Install]
+WantedBy=default.target

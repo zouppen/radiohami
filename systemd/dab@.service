@@ -1,0 +1,16 @@
+[Unit]
+Description=DAB audio encoding for %i
+After=pipewire.service
+Requires=pipewire.service
+After=dab.service
+Requires=dab.service
+
+[Service]
+Type=simple
+EnvironmentFile=%h/radiohami/dab/%I.conf
+ExecStart=/usr/bin/pw-jack odr-audioenc -b $BITRATE --ps -e $TARGET -d $SOURCE
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=default.target

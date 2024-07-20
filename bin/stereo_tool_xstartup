@@ -1,0 +1,14 @@
+#!/bin/sh -eu
+
+# NB! Although stereo tool input is fed to systemd journal, there is also TigerVNC log in ~/.vnc
+
+# Binary name is specified in systemd unit configuration
+systemd-cat "$STEREO_TOOL_BIN" &
+
+# Maximizer
+while ! xdotool search --name 'Stereo Tool' windowmove 0 0 windowsize 100% 100%; do
+      sleep 1
+done
+echo "Stereo Tool maximized."
+
+wait
