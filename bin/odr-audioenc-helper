@@ -1,0 +1,10 @@
+#!/bin/sh -eu
+
+# OBS! Variables in capital letters are delivered via systemd
+. "$(dirname "$0")/helpers"
+
+rate=48000
+channels=2
+input_num="$(get_pw_source)"
+
+pw-record --rate "$rate" --channels "$channels" --target "$input_num" - | odr-audioenc -i - -f raw -r "$rate" -c "$channels" -b "$BITRATE" --ps -e "$TARGET"

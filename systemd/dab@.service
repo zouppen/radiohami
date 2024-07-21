@@ -8,7 +8,7 @@ Requires=dabmux.service
 [Service]
 Type=simple
 EnvironmentFile=%h/radiohami/dab/%I.conf
-ExecStart=/usr/bin/pw-jack odr-audioenc -b $BITRATE --ps -e $TARGET -d $SOURCE
+ExecStart=%Y/../bin/odr-audioenc-helper
 Restart=always
 RestartSec=10s
 
