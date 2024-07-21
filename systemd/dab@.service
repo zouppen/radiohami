@@ -8,6 +8,7 @@ Requires=dabmux.service
 [Service]
 Type=simple
 EnvironmentFile=%h/radiohami/dab/%I.conf
+Environment=PW_NODE=%I
 ExecStart=%Y/../bin/odr-audioenc-helper
 Restart=always
 RestartSec=10s
