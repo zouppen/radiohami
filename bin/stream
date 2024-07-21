@@ -3,7 +3,7 @@
 # OBS! Variables in capital letters are delivered via systemd
 . "$(dirname "$0")/helpers"
 
-input_num="$(get_pw_source)"
+input_num="$(get_pw_input)"
 
 case "${FORMAT-}" in
     opus)

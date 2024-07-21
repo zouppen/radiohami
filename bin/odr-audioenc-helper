@@ -5,6 +5,6 @@
 
 rate=48000
 channels=2
-input_num="$(get_pw_source)"
+input_num="$(get_pw_input)"
 
 pw-record --rate "$rate" --channels "$channels" --target "$input_num" - | odr-audioenc -i - -f raw -r "$rate" -c "$channels" -b "$BITRATE" --ps -e "$TARGET"
