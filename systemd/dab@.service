@@ -2,8 +2,8 @@
 Description=DAB audio encoding for %i
 After=pipewire.service
 Requires=pipewire.service
-After=dab.service
-Requires=dab.service
+After=dabmux.service
+Requires=dabmux.service
 
 [Service]
 Type=simple
