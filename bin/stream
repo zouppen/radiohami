@@ -1,9 +1,9 @@
 #!/bin/sh -eu
 
 # OBS! Variables in capital letters are delivered via systemd
+. "$(dirname "$0")/helpers"
 
-# Get Pulseaudio input number (ffmpeg bugs with symbolic name)
-input_num="$(pactl -f json list sources short|jq -e 'map(select(.name == env.INPUT) | .index)[0]')"
+input_num="$(get_pw_source)"
 
 case "${FORMAT-}" in
     opus)
