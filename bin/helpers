@@ -5,3 +5,7 @@
 get_pw_input() {
     pw-dump | jq -er 'map(.info.props | select(."node.name" == env.INPUT) | ."object.serial")[0]'
 }
+
+get_pw_output() {
+    pw-dump | jq -er 'map(.info.props | select(."node.name" == env.OUTPUT) | ."object.serial")[0]'
+}

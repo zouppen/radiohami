@@ -4,8 +4,32 @@
 . "$(dirname "$0")/helpers"
 
 rate=48000
-channels=2
 input_num="$(get_pw_input)"
 pw_props="$(jq -n '{"node.name":("dab-"+env.PW_NODE)}')"
 
-pw-record --rate "$rate" --channels "$channels" --target "$input_num" -P "$pw_props" - | odr-audioenc -i - -f raw -r "$rate" -c "$channels" -b "$BITRATE" --ps -e "$TARGET"
+echo "Säädöt: $input_num"
+echo "Säädöt2: $pw_props"
+
+raw_audio () {
+    pw-record --rate "$rate" --channels "$CHANNELS" --target "$input_num" -P "$pw_props" -
+}
+
+case "$TYPE" in
+    dab)
+	raw_audio | odr-audioenc -i - -f raw -r "$rate" -c "$CHANNELS" -b "$BITRATE" -a -e "$TARGET"
+	;;
+    dabplus)
+	if test "$CHANNELS" = 2; then
+	    ARGS="--ps"
+	else
+	    ARGS=
+	fi
+	raw_audio | odr-audioenc -i - -f raw -r "$rate" -c "$CHANNELS" -b "$BITRATE" $ARGS -e "$TARGET"
+	;;
+    dabplus_lc)
+	raw_audio | odr-audioenc -i - -f raw -r "$rate" -c "$CHANNELS" -b "$BITRATE" --aaclc -e "$TARGET"
+	;;
+    *)
+	echo "Unknown encoder type: $TYPE"
+	;;
+esac
